@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drift Library</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+        <link rel="stylesheet" href="css/buttons.css" >
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+
+    <body>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/unslider.min.js"></script>
+
+        <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <nav>
+                <ul class="nav">
+                    <li><a id="logo" href="#">Drift Library</a></li>
+                </ul>
+
+                <form class="form-search header_search" action="#">
+                    <div class="input-append">
+                        <input class="span2 search-query" type="text" placeholder="你想要的图书" />
+                        <button class="btn">搜索</button>
+                    </div>
+                </form>
+
+                </nav>
+            </div>
+        </div>
+        </header>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <div style="height:300px;" class="content">
+                        <img class="img_logo" src="img/logo.png" alt="logo" />
+                        <div class="index_about">
+                            <h1>Drift Library</h1>  
+                            <p>
+                            这是一个没有固定居所的“漂流图书馆”。
+                            </p>
+                            <p>
+                            所有图书来源于会员捐赠，也寄存于会员处。
+                            </p>
+                            <p>
+                            会员可以免费借阅他人分享的图书，也可以分享自己的闲书。
+                            </p>
+                        </div>
+                    </div>
+                    <div style="height: 180px;" class="content">
+                        <h3 class="floatleft" >随机推荐</h3>
+                        <a href="#" class="unslider-arrow next button button-flat-primary button-tiny floatright"> >> </a>
+                        <a href="#" class="unslider-arrow prev button button-flat-primary button-tiny floatright"> << </a>
+                        <div class="banner">
+                            <ul>
+                                <li>
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s6971618.jpg" alt="book1" />
+                                <img class="img_cover" src="http://img4.douban.com/lpic/s7647218.jpg" alt="book2" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s24927725.jpg" alt="book3" />
+                                <img class="img_cover" src="http://img1.douban.com/lpic/s7658952.jpg" alt="book4" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s6521579.jpg" alt="book5" />
+                                </li>
+                                <li>            
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s24927725.jpg" alt="book3" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s6971618.jpg" alt="book1" />
+                                <img class="img_cover" src="http://img4.douban.com/lpic/s7647218.jpg" alt="book2" />
+                                <img class="img_cover" src="http://img1.douban.com/lpic/s7658952.jpg" alt="book4" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s6521579.jpg" alt="book5" />
+                                </li>
+                                <li>
+                                <img class="img_cover" src="http://img1.douban.com/lpic/s7658952.jpg" alt="book4" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s6971618.jpg" alt="book1" />
+                                <img class="img_cover" src="http://img4.douban.com/lpic/s7647218.jpg" alt="book2" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s24927725.jpg" alt="book3" />
+                                <img class="img_cover" src="http://img3.douban.com/lpic/s6521579.jpg" alt="book5" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span4 ">
+                    <form  method="post" action="loginAction" class="content form-signin">
+                        <input type="text" class="input-block-level" placeholder="Email address" name="email">
+                        <input type="password" class="input-block-level" placeholder="Password" name="password">
+                        <label class="checkbox">
+                            <input type="checkbox" value="remember-me">记住我</input>
+                        </label>
+                        <button class="button glow button-rounded button-flat-primary" type="submit">登录</button>
+                        <button class="button glow button-rounded button-flat-primary" type="submit">注册</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var unslider = $('.banner').unslider();
+
+            $('.unslider-arrow').click(function() {
+                    var fn = this.className.split(' ')[1];
+
+                    //  Either do unslider.data('unslider').next() or .prev() depending on the className
+                    unslider.data('unslider')[fn]();
+                    });
+</script>
+
+</body>
+</html>
