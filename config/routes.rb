@@ -5,6 +5,8 @@ DriftingLibraryRor::Application.routes.draw do
   root 'welcome#index'
   resources :users
   resources :books
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin',to:'sessions#new',via:'get'
 
   get "static_pages/help"
   get "static_pages/about"
