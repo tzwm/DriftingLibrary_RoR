@@ -42,38 +42,24 @@
 
 
         <div class="container">
-            <form method="post" class="content form-signup" id="form-signup" action="registerAction">
-                <h2 class="form-signup-heading"></h2>
-                <label for="user_name">用户名</label>
-                <input id="user_name" type="text" name="user_name" />
+            <%= form_for(@user,:html=>{:class=>'content form-signup',:id=>'form-signup'}) do |f| %>
+            <%= render 'shared/error_messages' %>
+                <%= f.label :name %>
+                <%= f.text_field :name %>
 
-                <label for="user_email">邮箱</label>
-                <input id="user_email" type="text"  name="user_email"/>
-                <div class="info">
-                    <table>
-                        <tbody>
-                            <tr id="info_email"></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <%= f.label :email %>
+                <%= f.text_field :email %>
 
-                <label for="user_password">密码</label>
-                <input id="user_password" type="password" name="user_password"/>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
 
-                <label for="user_password_confirmation">确认密码</label>
-                <input id="user_password_confirmation" type="password" name="user_password_confirmation" />
+                <%= f.label :password_confirmation, "Confirmation" %>
+                <%= f.password_field :password_confirmation %>
 
-                <br />
-                
-                <s:text name="random"></s:text>
-                <s:textfield name="rand" id="rand" size="5"></s:textfield>
-                <img src="randAction" onclick="changeValidateCode(this)" title="点击图片刷新验证码"/>
-                <input id="auth_code" type="text" name="auth_code" />
-                
-                <br />
-                <input class="btn btn-large btn-primary" type="submit" name="commit" value="提交" />
+                <br/>
 
-            </form>
+                <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+            <% end %>
         </div>
 
     </body>

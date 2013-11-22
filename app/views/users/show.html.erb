@@ -56,6 +56,9 @@
 	</header>
     
     <div class="container">
+        <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
         <div class="row">
             <div class="span8">
                 <div class="content content_nav">
@@ -140,8 +143,8 @@
     
             <div class="span4">
                 <div class="content box_user">
-                    <img class="user_photo" src="http://www.gravatar.com/avatar/f056d7298d8076c2c5283c078a9ad4a9?s=45" alt="" />
-                    <p class="user_name pd10" >tzwm</p>
+                    <%= gravatar_for params[:id] %>
+                    <p class="user_name pd10" ><%=name_for params[:id]%></p>
                     <br />
                     <a class="pd10" href="#">设置</a>
                     <br />

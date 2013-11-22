@@ -7,6 +7,7 @@ form,fieldset,input,textarea,p,blockquote,th,td {
     font-family:Arial;
     word-wrap:break-word;
 }
+
 html{
     overflow-y: scroll;
 }
