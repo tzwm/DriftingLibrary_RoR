@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Drift Library</title>
+</head>
+<body>
+
+    <script type="text/javascript"> 
+        $.getJSON('https://api.douban.com/v2/book/2567698?apikey=05fda08443dc365f11f8e18ccb94a31d&callback=?', function(data) {
+            document.getElementById("bookBox_cover").src = data.image;
+            document.getElementById("bookBox_info_title").innerHTML = data.title;
+            var str = data.summary; 
+            str = "<p>" +str + "</p>";
+            str = str.replace(/\n/g, "</p>\n<p>");
+            document.getElementById("summary").innerHTML = str; 
+        });
+
+   </script>
+    
+	<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<nav>
+					<ul class="nav">
+						<li><a id="logo" href="#">Drift Library</a></li>
+					</ul>
+
+                    <form class="form-search header_search" action="#">
+                        <div class="input-append">
+                            <input class="span2 search-query" type="text" placeholder="你想要的图书" />
+                            <button class="btn">搜索</button>
+                        </div>
+                    </form>
+
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+        <div class="row">
+            <div class="span8">
+                <div class="content">
+                    <div class="bookBox">
+                        <img id="bookBox_cover" src="" alt="cover" />
+                        <div class="bookBox_info">
+                            <h3 id="bookBox_info_title"></h3>
+                            <ul id="bookBox_info_info">
+                                <li>副标题:</li>
+                                <li>作者:</li>
+                                <li>出版社:</li>
+                            </ul>
+                        </div>
+                        <div class="bookBox_count">
+                            <span>
+                                <label id="count_want">0</label>
+                                想借
+                            </span>
+                            <span>
+                                <label id="count_current">0</label>
+                                当前库存
+                            </span>
+                            <span>
+                                <label id="count_total">0</label>
+                                总库存
+                            </span>
+                        </div>
+    
+                        <div class="book_activity">
+                            <button id="wishBtn" class="button glow button-rounded button-flat-primary">想借</button>
+                            <button id="donateBtn" class="button glow button-rounded button-flat-primary">捐赠</button>
+                        </div>
+    
+                    </div>
+                    <div class="book_summary">
+                        <h3 class="mb5">本书简介</h3>
+                        <div id="summary" class="summary"></div>
+                    </div>    
+                </div>
+            </div>
+    
+            <div class="span4">
+                <div> 
+                    <div class="content book_info_box">
+                        <h3 class="mb5">其它信息</h3>
+                        <ul>
+                            <li>ISBN:</li>
+                            <li>出版社:</li>
+                            <li>出版年:</li>
+                            <li>豆瓣链接:</li>
+                        </ul>
+                    </div> 
+                    <div class="content">
+                        <h3 class="mb5">标签</h3>
+                        <div>
+                            <a class="book_tags" href="#">标签1</a>
+                            <a class="book_tags" href="#">标签2</a>
+                            <a class="book_tags" href="#">标签3</a>
+                            <a class="book_tags" href="#">标签3</a>
+                            <a class="book_tags" href="#">标签3</a>
+                            <a class="book_tags" href="#">标签3</a>
+                            <a class="book_tags" href="#">标签3</a>
+                            <a class="book_tags" href="#">标签3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        wishBtn = document.getElementById("wishBtn");
+        donateBtn = document.getElementById("donateBtn");
+
+        function pressWish(){
+            btn = document.getElementById("wishBtn");
+            btn.className = "button button-rounded button-flat"; 
+        }
+
+        function pressDonate(){
+            btn = document.getElementById("donateBtn");
+            btn.className = "button button-rounded button-flat"; 
+        }
+        wishBtn.addEventListener("click", pressWish);
+        donateBtn.addEventListener("click", pressDonate);
+    </script>
+</body>

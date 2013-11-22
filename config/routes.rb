@@ -1,6 +1,10 @@
 DriftingLibraryRor::Application.routes.draw do
 
-    root 'static_pages#home'
+  get "users/new"
+  match '/signup',to:'users#new',via:'get'
+  root 'welcome#index'
+  resources :users
+  resources :books
 
   get "static_pages/help"
   get "static_pages/about"

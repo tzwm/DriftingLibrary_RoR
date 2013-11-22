@@ -1,0 +1,379 @@
+/*=========universal==========*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+    font-size:12px;
+    font-family:Arial;
+    word-wrap:break-word;
+}
+html{
+    overflow-y: scroll;
+}
+
+body{
+    padding-top: 60px;
+    background-color: #F6F6F1;
+}
+
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+
+
+ol,ul {
+    list-style: none;
+}
+
+section{
+    overflow: auto;
+}
+
+textarea{
+    resize: vertical;
+}
+
+.mb5{
+  margin-bottom:5px;
+}
+.pd10{
+    padding-left: 10px;
+}
+
+.floatleft{
+    float: left;
+}
+
+.floatright{
+    float: right;
+}
+.content{
+    background: #ffffff;
+    margin: 0 auto 20px;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+
+    /*min-width: 170px;*/
+}
+
+.content h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top:-10px;
+}
+
+
+.img_cover{
+    width: 100px;
+    height: 140px;
+}
+
+.banner img, .banner1 img, .banner2 img, .banner3 img{
+    padding-right: 10px;
+}
+
+.book_list{
+    height: 150px;
+}
+
+/*===========header=======*/
+
+.header_search{
+    float: right;
+    padding-left: 5px;
+    padding-right: 110px;
+    padding-top: 5px;
+}
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    line-height: 1;
+    padding-left: 110px;
+}
+
+/*============index========*/
+
+.form-signup{
+    max-width: 300px;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+
+.form-signin input,
+.form-signup input{
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+.form-signup input[type="text"],
+.form-signup input[type="password"]{
+    width: 280px;
+}
+
+
+.img_logo{
+    width: 300px;
+    float: left; 
+    padding-right: 10px;
+}
+
+.index_about{
+    color: #484847;
+}
+
+.index_about h1{
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.index_about p{
+    font-family: "Hiragino Sans GB";
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+/*=========bookinfo=========*/
+
+.bookBox {
+    padding: 5px;
+    position: relative;
+}
+
+.bookBox_cover {
+    width: 100px;
+    height: 145px;
+    float: left;
+}
+
+.bookBox_info {
+    /*width: 450px;*/
+    /*padding-bottom: 10px;*/
+    /*padding-right: 40px;*/
+    /*margin-bottom: 16px;*/
+    /*position: relative;*/
+    /*z-index: 10;*/
+    /*float: right;*/
+    float:left;
+    position: absolute;
+    top:10px;
+    left:140px;
+}
+
+.bookBox_info h3 {
+    color: #227CA2;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 260px;
+}
+
+.content ul {
+    color: #666;
+    line-height: 24px;
+    width: 260px;
+}
+
+.bookBox_count {
+    position: absolute;
+    top: 15px;
+    right: 0px;
+}
+
+.bookBox_count span {
+    border-left: 1px solid #E0E0E0;
+    float: left;
+    margin-left: 5px;
+    padding-left: 5px;
+    position: relative;
+    width: 50px;
+    text-align: center;
+    color: #666;
+}
+
+.bookBox_count span label {
+    color: #4C4C4C;
+    /*display: inline-block;*/
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.book_activity{
+    float:left;
+    position: absolute;
+    top: 120px;
+    left: 140px;
+}
+
+.book_summary{
+    margin-top:20px; 
+    padding:0 15px; 
+}
+
+.summary{
+    line-height:20px; 
+    margin-bottom:10px;
+    color: #666;
+}
+
+.summary p{
+    text-indent: 2em;
+}
+
+.book_tags{
+    font-size: 12px;
+    padding-right: 10px;
+}
+
+/*=======user=======*/
+
+.box_user {
+    width: auto;
+    height: 100px;
+}
+
+.user_photo,
+.user_name{
+    float: left;
+}
+
+.userBox_count {
+    margin-top: 10px;
+    margin-left: -6px;
+}
+
+.userBox_count span {
+    border-left: 1px solid #E0E0E0;
+    float: left;
+    margin-left: 5px;
+    padding-left: 5px;
+    position: relative;
+    width: 50px;
+    text-align: center;
+    color: #666;
+}
+
+.userBox_count span label {
+    color: #4C4C4C;
+    /*display: inline-block;*/
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.content_nav{
+    padding:0px;
+}
+
+.content_navbar{
+    padding: 10px 15px 10px 0;
+    border-bottom: 1px solid #DCDCDC;
+    background: #F6F5F3;
+
+}
+
+.content_navbar_tab{
+    border-right: 1px solid #DCDCDC;
+    padding:10px 15px;
+    font-size: 14px;
+    color: #8D8D8D;
+}
+
+.content_navbar_tab_current{
+    padding-bottom: 15px;
+    background: #FFFFFF;
+}
+
+.book_list{
+    padding: 20px;
+}
+
+
+.book_list2 li{
+    border-bottom: 1px solid #BFC0C1;
+    padding-left: 15px;
+    padding-top: 15px;
+    font-size: 12px;
+    height: 60px;
+    width: 550px;
+}
+
+.book_list2 a{
+    max-width: 160px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    top: 20px;
+}
+
+.book_list2 li img{
+    float: left;
+    width: 36px;
+    height: 50px;
+    padding-right: 15px;
+}
+
+.book_inventory{
+    font: #000000;
+    font-size: 12px;
+    position: relative;
+    top: 20px;
+    left: 150px;
+}
+
+.book_want{
+    position: relative;
+    top: 20px;
+    left: 180px;
+    
+}
+
+/*=====search=====*/
+
+.search_results{
+    /*height: 120px;*/
+}
+
+.search_results ul li img.img_cover{
+    width: 65px;
+    height: 95px;
+    float:left;
+    padding-right: 10px;
+}
+
+.search_results ul li a.book_name{
+    font-size: 14px;
+}
+
+.search_results ul li p{
+    color: #A5A5A5;
+    margin-bottom: 10px;
+}
+
+.search_results ul li{
+	padding-bottom: 10px;	
+}
+
+
+.search_results ul li div.book_info{
+}    
