@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	$("#add_click").click(function(){
     var isbn_input = $("#isbn_input").val();
+    if(isbn_input.length==0)
+        alert("The ISBN can't be empty ");
+    else
+    {
     var url = "https://api.douban.com/v2/book/isbn/"+isbn_input+"?apikey=05fda08443dc365f11f8e18ccb94a31d&callback=?";
     $.getJSON(url, function(data) {
             var tags=data.tags;
@@ -17,15 +21,14 @@ $(document).ready(function(){
             var pubdate_str = data.pubdate;;
             var isbn_str=isbn_input;
             var url_str=data.alt;
-            $.post("addBook",{tag:tags_str,title:title_str,subtitle:subtitle_str,author:author_str,image:image_str,authorIntro:authorIntro_str,summary:summary_str
-            ,publisher:publisher_str,pubdate:pubdate_str,isbn:isbn_str,url:url_str},function(result){
-            	if(result=="success"){
-            		location.reload();
-            	}
-            	if(result=="repeat"){
-            		alert('repeat');
-            	}
-            });
-    });
+            $.ajax(
+                type:"POST",
+                url:"/donate",
+                data:{info:{tag:tags_str,title:title_str,subtitle:subtitle_str,author:author_str,image:image_str,author_infor:authorIntro_str,summary:summary_str
+            ,publisher:publisher_str,pubdate:pubdate_str,isbn:isbn_str,url:url_str}},
+                success:function{alert("success");}
+                );
+    });     
+}
         });
 });
