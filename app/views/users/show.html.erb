@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Drift Library</title>
+    <title>My Books</title>
 </head>
 <body>
 
@@ -37,20 +37,20 @@
 
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
-     <div class="container-fluid">
-        <nav>
-           <ul class="nav">
-              <li><a id="logo" href="#">Drift Library</a></li>
-          </ul>
+   <div class="container-fluid">
+    <nav>
+     <ul class="nav">
+      <li><a id="logo" href="#">Drift Library</a></li>
+  </ul>
 
-          <form class="form-search header_search" action="#">
-            <div class="input-append">
-                <input class="span2 search-query" type="text" placeholder="你想要的图书" />
-                <button class="btn">搜索</button>
-            </div>
-        </form>
+  <form class="form-search header_search" action="#">
+    <div class="input-append">
+        <input class="span2 search-query" type="text" placeholder="你想要的图书" />
+        <button class="btn">搜索</button>
+    </div>
+</form>
 
-    </nav>
+</nav>
 </div>
 </div>
 </header>
@@ -82,16 +82,16 @@
                                     <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
                                     <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>                                    </li>
                                     <li>
-                                     <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                                     <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                                     <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                                     <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                                     <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-                                 </li>
-                             </ul>
-                         </div>
-                     </div> 
-                     <div class="book_list">
+                                       <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+                                       <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+                                       <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+                                       <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+                                       <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div> 
+                       <div class="book_list">
                         <h3 class="floatleft">我已借的</h3>
                         <a href="#" class="unslider2-arrow next button button-flat-primary button-tiny floatright"> >> </a>
                         <a href="#" class="unslider2-arrow prev button button-flat-primary button-tiny floatright"> << </a>
@@ -173,15 +173,21 @@
                 <% if signed_in? %>
                 <% @t_user = User.find(params[:id])%>
                 <% if current_user?(@t_user) %>
-                <h3>捐书</h3>
                 <div class="content">
                     <h3>捐书</h3>
-                    <form class="form-inline" action="#">
+                    <%= form_for(:book,url: '/donate',:html=>{:class=>"form-inline"}) do |f| %>
+                    <%= f.label :isbn %>
+                    <%= f.text_field :isbn %>
+                    <br/>
+                    <br>
+                    <%= f.submit "Submit", class: "button glow button-rounded button-flat-primary" %>
+                    <% end %>
+                    <!-- <form class="form-inline" action="#">
                         <input type="text" style="width:180px;" id="isbn_input" placeholder="ISBN" name="isbn_input" />
                         <br/>
                         <br/>
-                        <input class="button glow button-rounded button-flat-primary button-small" id="add_click" name="donate" value="捐出"/>
-                    </form>
+                        <input type="button" class="button glow button-rounded button-flat-primary button-small" id="add_click" name="donate" value="捐出"/>
+                    </form> -->
                 </div>
                 <% end %>
                 <% end %>

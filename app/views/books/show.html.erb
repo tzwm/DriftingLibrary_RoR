@@ -5,18 +5,6 @@
 	<title>Drift Library</title>
 </head>
 <body>
-
-    <script type="text/javascript"> 
-        $.getJSON('https://api.douban.com/v2/book/2567698?apikey=05fda08443dc365f11f8e18ccb94a31d&callback=?', function(data) {
-            document.getElementById("bookBox_cover").src = data.image;
-            document.getElementById("bookBox_info_title").innerHTML = data.title;
-            var str = data.summary; 
-            str = "<p>" +str + "</p>";
-            str = str.replace(/\n/g, "</p>\n<p>");
-            document.getElementById("summary").innerHTML = str; 
-        });
-
-   </script>
     
 	<header class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
@@ -43,13 +31,13 @@
             <div class="span8">
                 <div class="content">
                     <div class="bookBox">
-                        <img id="bookBox_cover" src="" alt="cover" />
+                        <img id="bookBox_cover" src=<%=@book.image%> alt="cover" />
                         <div class="bookBox_info">
-                            <h3 id="bookBox_info_title"></h3>
+                            <h3 id="bookBox_info_title"><%=@book.title%></h3>
                             <ul id="bookBox_info_info">
-                                <li>副标题:</li>
-                                <li>作者:</li>
-                                <li>出版社:</li>
+                                <li>副标题:<%=@book.subtitle%></li>
+                                <li>作者:<%=@book.author%></li>
+                                <li>出版社:<%=@book.publisher%></li>
                             </ul>
                         </div>
                         <div class="bookBox_count">
@@ -75,7 +63,7 @@
                     </div>
                     <div class="book_summary">
                         <h3 class="mb5">本书简介</h3>
-                        <div id="summary" class="summary"></div>
+                        <div id="summary" class="summary"><%=raw @book.summary%></div>
                     </div>    
                 </div>
             </div>
@@ -85,23 +73,22 @@
                     <div class="content book_info_box">
                         <h3 class="mb5">其它信息</h3>
                         <ul>
-                            <li>ISBN:</li>
-                            <li>出版社:</li>
-                            <li>出版年:</li>
+                            <li>ISBN:<%=@book.isbn %></li>
+                            <li>出版社:<%=@book.publisher %></li>
+                            <li>出版年:<%=@book.pubdate %></li>
                             <li>豆瓣链接:</li>
+                            <li><a href=<%=@book.url %> ><%=@book.url %></a></li>
                         </ul>
                     </div> 
                     <div class="content">
                         <h3 class="mb5">标签</h3>
                         <div>
-                            <a class="book_tags" href="#">标签1</a>
-                            <a class="book_tags" href="#">标签2</a>
-                            <a class="book_tags" href="#">标签3</a>
-                            <a class="book_tags" href="#">标签3</a>
-                            <a class="book_tags" href="#">标签3</a>
-                            <a class="book_tags" href="#">标签3</a>
-                            <a class="book_tags" href="#">标签3</a>
-                            <a class="book_tags" href="#">标签3</a>
+                            <%  mtag=@book.tag
+                                tags = mtag.split(',')
+                            %>
+                            <%= tags.each do |tag|%>
+                            <%=raw link_to tag+'aaa', "#",:html=>{:class=>"book_tags"}%>
+                            <% end %>
                         </div>
                     </div>
                 </div>

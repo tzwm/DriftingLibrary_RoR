@@ -21,13 +21,18 @@ $(document).ready(function(){
             var pubdate_str = data.pubdate;;
             var isbn_str=isbn_input;
             var url_str=data.alt;
-            $.ajax(
-                type:"POST",
-                url:"/donate",
-                data:{info:{tag:tags_str,title:title_str,subtitle:subtitle_str,author:author_str,image:image_str,author_infor:authorIntro_str,summary:summary_str
-            ,publisher:publisher_str,pubdate:pubdate_str,isbn:isbn_str,url:url_str}},
-                success:function{alert("success");}
-                );
+            // $.ajax(
+            //     type:"POST",
+            //     url:"/donate",
+            //     data:{info:{tag:tags_str,title:title_str,subtitle:subtitle_str,author:author_str,image:image_str,author_infor:authorIntro_str,summary:summary_str
+            // ,publisher:publisher_str,pubdate:pubdate_str,isbn:isbn_str,url:url_str}},
+            //     success:(data)
+            //     );
+            // $.post("/donate",{tag:tags_str,title:title_str,subtitle:subtitle_str,author:author_str,image:image_str,author_infor:authorIntro_str,summary:summary_str
+            // ,publisher:publisher_str,pubdate:pubdate_str,isbn:isbn_str,url:url_str},function(result){alert(result);});
+            alert("before");
+            $.get("/donate",{title:title_str},function(result){alert(result);});
+            alert("end");
     });     
 }
         });
