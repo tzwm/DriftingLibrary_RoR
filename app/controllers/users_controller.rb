@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
+  def show
+    #@user= User.find(params[:id])
+    @d_books= Donated.where(:user_id=>params[:id])
+    @d_count =0
+    @d_books.each do |book|
+      @d_count = @d_count+book.num
+    end
+    @b_books = Borrowed.where(:user_id=>params[:id])
+    @b_count = 0
+    @b_books.each do |book|
+      @b_count = @b_count+book.num
+    end
+  end
+
   def new
     @user = User.new
   end

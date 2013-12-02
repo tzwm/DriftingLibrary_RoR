@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127180731) do
+ActiveRecord::Schema.define(version: 20131130195625) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -27,8 +27,30 @@ ActiveRecord::Schema.define(version: 20131127180731) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "tag"
+  end
+
+  create_table "borroweds", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.integer  "num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "donateds", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "num"
+  end
+
+  create_table "frees", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -43,5 +65,12 @@ ActiveRecord::Schema.define(version: 20131127180731) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "wishes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

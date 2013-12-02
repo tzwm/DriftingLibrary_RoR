@@ -80,7 +80,8 @@
                                     <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
                                     <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
                                     <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                                    <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>                                    </li>
+                                    <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>    
+                                </li>
                                     <li>
                                        <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
                                        <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
@@ -159,20 +160,20 @@
 
                 <div class="userBox_count">
                     <span>
-                        <label id="count_donate">0</label>
+                        <label id="count_donate"><%=@d_count%></label>
                         捐赠
                     </span>
                     <span>
-                        <label id="count_borrow">0</label>
+                        <label id="count_borrow"><%=@b_count%></label>
                         借入
                     </span>
                 </div>
             </div>
 
+            <% if signed_in? %>
+            <% @t_user = User.find(params[:id])%>
+            <% if current_user?(@t_user) %>
             <div class="content">
-                <% if signed_in? %>
-                <% @t_user = User.find(params[:id])%>
-                <% if current_user?(@t_user) %>
                 <div class="content">
                     <h3>捐书</h3>
                     <%= form_for(:book,url: '/donate',:html=>{:class=>"form-inline"}) do |f| %>
@@ -189,9 +190,9 @@
                         <input type="button" class="button glow button-rounded button-flat-primary button-small" id="add_click" name="donate" value="捐出"/>
                     </form> -->
                 </div>
-                <% end %>
-                <% end %>
             </div>
+            <% end %>
+            <% end %>
         </div>
     </div>
 </div>

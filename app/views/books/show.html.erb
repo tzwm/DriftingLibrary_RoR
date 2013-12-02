@@ -83,11 +83,13 @@
                     <div class="content">
                         <h3 class="mb5">标签</h3>
                         <div>
-                            <%  mtag=@book.tag
+                            <%  
+                                mtag=@book.tag
                                 tags = mtag.split(',')
+                                length = tags.length-1
+                                for i in 0..length do
                             %>
-                            <%= tags.each do |tag|%>
-                            <%=raw link_to tag+'aaa', "#",:html=>{:class=>"book_tags"}%>
+                            <%=link_to tags[i], "#",:html=>{:class=>"book_tags"}%>
                             <% end %>
                         </div>
                     </div>
