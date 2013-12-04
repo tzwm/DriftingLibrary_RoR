@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -45,11 +47,11 @@ class UsersController < ApplicationController
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :email, :password,
-     :password_confirmation)
+                                 :password_confirmation)
   end
+
   def signed_in_user
     unless signed_in?
       store_location
@@ -57,6 +59,7 @@ class UsersController < ApplicationController
       redirect_to signin_url
     end
   end
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
