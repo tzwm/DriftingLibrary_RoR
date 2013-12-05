@@ -1,111 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Drift Library</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
-
-<body>
-	<header class="navbar navbar-fixed-top navbar-inverse">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<nav>
-					<ul class="nav">
-						<li><a id="logo" href="#">Drift Library</a></li>
-					</ul>
-
-          <form class="form-search header_search" action="#">
-            <div class="input-append">
-              <input class="span2 search-query" type="text" placeholder="你想要的图书" />
-              <button class="btn">搜索</button>
-            </div>
-          </form>
-
-        </nav>
-      </div>
-    </div>
-  </header>
-  
-
-  <div class="container">
-    <div class="row">
-     <div class="span8">
+<div class="container">
+  <div class="row">
+    <div class="span8">
       <div style="height:300px;" class="content">
-       <%= image_tag("logo.png", alt: "logo",class:"img_logo")%>
-       <!-- <img class="img_logo" src="/app/assets/images/logo.png" alt="logo" /> -->
-       <div class="index_about">
-        <h1>Drift Library</h1>  
-        <p>
+        <%= image_tag("logo.png", alt: "logo",class:"img_logo")%>
+        <!-- <img class="img_logo" src="/app/assets/images/logo.png" alt="logo" /> -->
+        <div class="index_about">
+          <h1>Drift Library</h1>  
+          <p>
           这是一个没有固定居所的“漂流图书馆”。
-        </p>
-        <p>
+          </p>
+          <p>
           所有图书来源于会员捐赠，也寄存于会员处。
-        </p>
-        <p>
+          </p>
+          <p>
           会员可以免费借阅他人分享的图书，也可以分享自己的闲书。
-        </p>
+          </p>
+        </div>
+      </div>
+      <div style="height: 180px;" class="content">
+        <h3 class="floatleft" >随机推荐</h3>
+        <a href="#" class="unslider-arrow next button button-flat-primary button-tiny floatright"> >> </a>
+        <a href="#" class="unslider-arrow prev button button-flat-primary button-tiny floatright"> << </a>
+        <div class="banner">
+          <ul>
+            <li>
+              <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
+            </li>
+            <li>
+              <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
+            </li>
+            <li>
+              <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
+              <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>                               
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div style="height: 180px;" class="content">
-      <h3 class="floatleft" >随机推荐</h3>
-      <a href="#" class="unslider-arrow next button button-flat-primary button-tiny floatright"> >> </a>
-      <a href="#" class="unslider-arrow prev button button-flat-primary button-tiny floatright"> << </a>
-      <div class="banner">
-        <ul>
-          <li>
-           <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-         </li>
-         <li>
-           <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-         </li>
-         <li>
-           <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-           <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>                               
-         </li>
-       </ul>
-     </div>
-   </div>
- </div>
- <% if signed_in? %>
-<%= link_to "Sign out", signout_path, method: "delete" %>
- <% else %>
- <div class="span4">
-  <%= form_for(:session, url: sessions_path,:html=>{:class=>"content form-signin"}) do |f| %>
+    <% if signed_in? %>
+      <%= link_to "Sign out", signout_path, method: "delete" %>
+    <% else %>
+      <div class="span4">
+        <%= form_for(:session, url: sessions_path,:html=>{:class=>"content form-signin"}) do |f| %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email,placeholder:"Email address" %>
+          <%= f.label :email %>
+          <%= f.text_field :email,placeholder:"Email address" %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password ,placeholder:"Password"%>
-  <br/>
-  <%= f.submit "Sign in", class: "button glow button-rounded button-flat-primary" %>
-  <% end %>
-  <% end %>
-</div>
-</div>
+          <%= f.label :password %>
+          <%= f.password_field :password ,placeholder:"Password"%>
+          <br/>
+          <%= f.submit "Sign in", class: "button glow button-rounded button-flat-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <script type="text/javascript">
 var unslider = $('.banner').unslider();
 
 $('.unslider-arrow').click(function() {
-  var fn = this.className.split(' ')[1];
+    var fn = this.className.split(' ')[1];
 
-            //  Either do unslider.data('unslider').next() or .prev() depending on the className
-            unslider.data('unslider')[fn]();
-          });
+    //  Either do unslider.data('unslider').next() or .prev() depending on the className
+    unslider.data('unslider')[fn]();
+    });
 </script>
 
-</body>
-</html>

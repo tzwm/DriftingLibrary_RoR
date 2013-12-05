@@ -1,7 +1,8 @@
  <div class="span6 offset3">
  	<% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
+    <% end %>
+
     <%= form_for(:session, url: sessions_path,:html=>{:class=>"content form-signin"}) do |f| %>
 
     <%= f.label :email %>

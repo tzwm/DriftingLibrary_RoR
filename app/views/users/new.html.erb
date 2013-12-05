@@ -1,66 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<div class="container">
+  <%= form_for(@user,:html=>{:class=>'content form-signup',:id=>'form-signup'}) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-        <title>Drift Library</title>
-        <style type="text/css">
-            label.error{
-                color:red;
-            }
-        </style>
-        <script>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
 
-            function changeValidateCode(obj) {
-                //获取当前的时间作为参数，无具体意义 
-                var timenow = new Date().getTime();
-                //每次请求需要一个不同的参数，否则可能会返回同样的验证码 
-                //这和浏览器的缓存机制有关系，也可以把页面设置为不缓存，这样就不用这个参数了。 
-                obj.src = "randAction?d=" + timenow;
-            }
-        </script>
-    </head>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
-    <body>
-        <!-- <script src="http://code.jquery.com/jquery.js"></script> -->
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>
 
-        <header class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <nav>
-                <ul class="nav">
-                    <li><a id="logo" href="#">Drift Library</a></li>
-                </ul>
-                <ul class="nav pull-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-                </nav>
-            </div>
-        </div>
-        </header>      
+    <br/>
+
+    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
+<script>
+
+function changeValidateCode(obj) {
+  //获取当前的时间作为参数，无具体意义 
+  var timenow = new Date().getTime();
+  //每次请求需要一个不同的参数，否则可能会返回同样的验证码 
+  //这和浏览器的缓存机制有关系，也可以把页面设置为不缓存，这样就不用这个参数了。 
+  obj.src = "randAction?d=" + timenow;
+}
+</script>
 
 
-        <div class="container">
-            <%= form_for(@user,:html=>{:class=>'content form-signup',:id=>'form-signup'}) do |f| %>
-            <%= render 'shared/error_messages' %>
-                <%= f.label :name %>
-                <%= f.text_field :name %>
-
-                <%= f.label :email %>
-                <%= f.text_field :email %>
-
-                <%= f.label :password %>
-                <%= f.password_field :password %>
-
-                <%= f.label :password_confirmation, "Confirmation" %>
-                <%= f.password_field :password_confirmation %>
-
-                <br/>
-
-                <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-            <% end %>
-        </div>
-
-    </body>
-</html>
