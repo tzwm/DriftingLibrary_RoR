@@ -108,8 +108,13 @@ textarea{
 
 /*============index========*/
 
-.form-signup{
+.form-signup,
+.form-signin{
     max-width: 300px;
+}
+
+.form-signin{
+  height: 150px;
 }
 
 .form-signin .form-signin-heading,
@@ -120,10 +125,18 @@ textarea{
 
 .form-signin input,
 .form-signup input{
-    font-size: 16px;
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+}
+
+.form-signin input[type="submit"],
+.form-signout input[type="submit"]{
+  width: 100px;
+  height: 32px;
+  float: left;
+  line-height: normal;
+  margin-right: 10px;
 }
 
 .form-signup input[type="text"],

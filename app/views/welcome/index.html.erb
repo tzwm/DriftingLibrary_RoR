@@ -54,14 +54,14 @@
       <div class="span4">
         <%= form_for(:session, url: sessions_path,:html=>{:class=>"content form-signin"}) do |f| %>
 
-          <%= f.label :email %>
-          <%= f.text_field :email,placeholder:"Email address" %>
-
-          <%= f.label :password %>
-          <%= f.password_field :password ,placeholder:"Password"%>
+          <%= f.text_field :email,placeholder:"Email address", class: "input-block-level" %>
+          <%= f.password_field :password ,placeholder:"Password", class: "input-block-level" %>
           <br/>
           <%= f.submit "Sign in", class: "button glow button-rounded button-flat-primary" %>
+
+          <%= link_to "Sign up", signup_path, class: "button glow button-rounded button-flat-primary" %>
         <% end %>
+
       </div>
     <% end %>
   </div>
