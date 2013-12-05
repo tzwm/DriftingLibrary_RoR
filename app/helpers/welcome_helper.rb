@@ -6,7 +6,8 @@ module WelcomeHelper
       book = Book.find(randomID)
       imgUrl = book.image
       title = book.title
-      ret += link_to(image_tag(imgUrl, alt: title, class: "img_cover"), book_path(book)) + "\n"
+      ret += link_to(image_tag(imgUrl, alt: title, class: "img_cover"), 
+                     book_path(book)) + "\n"
     end
     
     return ret.html_safe

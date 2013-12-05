@@ -59,25 +59,12 @@
             </div>
           </div> 
           <div class="book_list">
-            <h3 class="floatleft">我可借的</h3>
+            <h3 class="floatleft">我已捐的</h3>
             <a href="#" class="unslider3-arrow next button button-flat-primary button-tiny floatright"> >> </a>
             <a href="#" class="unslider3-arrow prev button button-flat-primary button-tiny floatright"> << </a>
             <div class="banner3">
               <ul>
-                <li>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-                </li>
-                <li>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-                </li>
+                <%= get_donated_books() %>
               </ul>
             </div>
           </div> 
@@ -189,5 +176,4 @@ $.getJSON('https://api.douban.com/v2/book/2567698?callback=?', function(data) {
 });
 
 </script>
-
 
