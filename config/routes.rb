@@ -12,6 +12,7 @@ DriftingLibraryRor::Application.routes.draw do
   match '/donate',to:'books#donate',via:'post'
   match '/books/:id/wish', to: 'books#wish', via: 'post' 
   match '/books/:id/cancel_wish', to: 'books#cancel_wish', via: 'post'
+  match '/books/:id/donate_again', to: 'books#donate_again', via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

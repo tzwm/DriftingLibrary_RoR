@@ -10,4 +10,14 @@ module BooksHelper
 
     return wishes.count
   end
+
+  def donated_total(book_id)
+    donateds = Donated.where(:book_id=>book_id)
+    num = 0
+    donateds.each do |d|
+      num += d.num
+    end
+
+    return num
+  end
 end

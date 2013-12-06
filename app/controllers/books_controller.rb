@@ -83,7 +83,7 @@ class BooksController < ApplicationController
   def wish
     n_wish = Wish.new
     n_wish.user_id = params[:u]
-    n_wish.book_id = Book.find(params[:id]).id
+    n_wish.book_id = params[:id]
     if n_wish.save
       flash[:success] = "成功添加想借书籍"
     else
@@ -94,12 +94,36 @@ class BooksController < ApplicationController
   end
 
   def cancel_wish
-    Wish.destroy_all(:user_id=>params[:u],
+    if Wish.destroy_all(:user_id=>params[:u],
                      :book_id=>params[:id])
+      flash[:success] = "成功移除想借书籍"
+    else
+      flash[:error] = "移除失败"
+    end
 
     redirect_to Book.find(params[:id])
   end
 
+  def donate_again
+    user_id = params[:u]
+    book_id = params[:id]
+    o_donate = Donated.where(:user_id=>user_id,
+                             :book_id=>book_id)
+    if o_donate.empty?
+      n_donate = Donated.new(:user_id=>user_id,
+                             :book_id=>book_id,
+                             :num=>1)
+      n_donate.save
+    else
+      n_donate = o_donate.first
+      n_donate.num += 1
+      n_donate.save
+    end
+
+    flash[:success] = "成功捐赠"
+    
+    redirect_to Book.find(params[:id])
+  end
 
   private
   def signed_in_user

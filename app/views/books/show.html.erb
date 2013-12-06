@@ -1,4 +1,7 @@
 <div class="container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
   <div class="row">
     <div class="span8">
       <div class="content">
@@ -24,7 +27,9 @@
               当前库存
             </span>
             <span>
-              <label id="count_total">0</label>
+              <label id="count_total">
+                <%= donated_total(@book.id) %> 
+              </label>
               总库存
             </span>
           </div>
@@ -42,7 +47,10 @@
                   :method=>'post', 
                   class: "button glow button-rounded button-flat-primary" %>
               <% end %>
-              <%= link_to "捐赠", signin_path, class: "button glow button-rounded button-flat-primary" %>
+              <%= link_to "捐赠", 
+                {:controller=>'books', :action=>'donate_again', :u=>@current_user.id}, 
+                :method=>'post',
+                class: "button glow button-rounded button-flat-primary" %>
             <% else %>
               <%= link_to "想借", signin_path, class: "button button-rounded button-flat" %>
               <%= link_to "捐赠", signin_path, class: "button button-rounded button-flat" %>
@@ -86,21 +94,4 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  wishBtn = document.getElementById("wishBtn");
-  donateBtn = document.getElementById("donateBtn");
-
-  function pressWish(){
-    btn = document.getElementById("wishBtn");
-    btn.className = "button button-rounded button-flat"; 
-  }
-
-  function pressDonate(){
-    btn = document.getElementById("donateBtn");
-    btn.className = "button button-rounded button-flat"; 
-  }
-  wishBtn.addEventListener("click", pressWish);
-  donateBtn.addEventListener("click", pressDonate);
-</script>
 
