@@ -84,6 +84,7 @@
           <% if current_user?(@t_user) %>
             <%= link_to "设置",edit_user_path(current_user),:class=>"pd10"%>
             <!-- <a class="pd10" href="#">设置</a> -->
+            <%= link_to "登出", signout_path, method: "delete" ,:class=>"pd10"%>
           <% end %>
         <% end %>
         <br />
