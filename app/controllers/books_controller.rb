@@ -80,6 +80,27 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def wish
+    n_wish = Wish.new
+    n_wish.user_id = params[:u]
+    n_wish.book_id = Book.find(params[:id]).id
+    if n_wish.save
+      flash[:success] = "成功添加想借书籍"
+    else
+      flash[:error] = "添加失败"
+    end
+
+    redirect_to Book.find(params[:id])
+  end
+
+  def cancel_wish
+    Wish.destroy_all(:user_id=>params[:u],
+                     :book_id=>params[:id])
+
+    redirect_to Book.find(params[:id])
+  end
+
+
   private
   def signed_in_user
     unless signed_in?

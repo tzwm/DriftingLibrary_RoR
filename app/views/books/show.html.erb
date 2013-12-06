@@ -14,7 +14,9 @@
           </div>
           <div class="bookBox_count">
             <span>
-              <label id="count_want">0</label>
+              <label id="count_want">
+                <%= wish_count(@book.id) %> 
+              </label>
               想借
             </span>
             <span>
@@ -28,8 +30,23 @@
           </div>
 
           <div class="book_activity">
-            <button id="wishBtn" class="button glow button-rounded button-flat-primary">想借</button>
-            <button id="donateBtn" class="button glow button-rounded button-flat-primary">捐赠</button>
+            <% if signed_in? %>
+              <% if wished?(@current_user.id, @book.id) %>
+                <%= link_to "想借", 
+                  {:controller=>'books', :action=>'cancel_wish', :u=>@current_user.id}, 
+                  :method=>'post', 
+                  class: "button button-rounded button-flat" %>
+              <% else %>
+                <%= link_to "想借", 
+                  {:controller=>'books', :action=>'wish', :u=>@current_user.id}, 
+                  :method=>'post', 
+                  class: "button glow button-rounded button-flat-primary" %>
+              <% end %>
+              <%= link_to "捐赠", signin_path, class: "button glow button-rounded button-flat-primary" %>
+            <% else %>
+              <%= link_to "想借", signin_path, class: "button button-rounded button-flat" %>
+              <%= link_to "捐赠", signin_path, class: "button button-rounded button-flat" %>
+            <% end %>
           </div>
 
         </div>
@@ -86,3 +103,4 @@
   wishBtn.addEventListener("click", pressWish);
   donateBtn.addEventListener("click", pressDonate);
 </script>
+
