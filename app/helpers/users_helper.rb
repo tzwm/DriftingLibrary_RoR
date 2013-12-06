@@ -11,6 +11,33 @@ module UsersHelper
     @current.name
   end
 
+  def get_wish_books(id)
+    num = 0
+    ret = ''
+    tmp = ''
+
+    @wishes = Wish.where(:user_id=>id)
+    @wishes.each do |wish|
+      book = wish.book
+      num += 1
+      if num==6
+        num=1
+        ret += "<li>"+tmp+"</li>\n"
+        tmp = ''
+      else
+        tmp += link_to(image_tag(book.image, 
+                                 alt:book.title, 
+                                 class:"img_cover"),
+                       book_path(book)) + "\n"
+      end
+    end
+    if tmp!=''
+      ret += "<li>"+tmp+"</li>\n"
+    end
+
+    return ret.html_safe
+  end
+
   def get_donated_books
     num = 0
     ret = ''
@@ -36,4 +63,5 @@ module UsersHelper
 
     return ret.html_safe
   end
+
 end

@@ -18,20 +18,7 @@
             <a href="#" class="unslider1-arrow prev button button-flat-primary button-tiny floatright"> << </a>
             <div class="banner1">
               <ul>
-                <li>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>    
-                </li>
-                <li>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                  <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-                </li>
+                <%= get_wish_books(params[:id]) %>
               </ul>
             </div>
           </div> 
@@ -105,22 +92,11 @@
         <% @t_user = User.find(params[:id])%>
         <% if current_user?(@t_user) %>
           <div class="content">
-            <div class="content">
-              <h3>捐书</h3>
-              <%= form_for(:book,url: '/donate',:html=>{:class=>"form-inline"}) do |f| %>
-                <%= f.label :isbn %>
-                <%= f.text_field :isbn %>
-                <br/>
-                <br>
-                <%= f.submit "Submit", class: "button glow button-rounded button-flat-primary" %>
-              <% end %>
-              <!-- <form class="form-inline" action="#">
-                        <input type="text" style="width:180px;" id="isbn_input" placeholder="ISBN" name="isbn_input" />
-                        <br/>
-                        <br/>
-                        <input type="button" class="button glow button-rounded button-flat-primary button-small" id="add_click" name="donate" value="捐出"/>
-                    </form> -->
-            </div>
+            <h3>捐书</h3>
+            <%= form_for(:book,url: '/donate',:html=>{:class=>"form-inline"}) do |f| %>
+              <%= f.text_field :isbn, placeholder: "ISBN", style: "width:180px" %>
+              <%= f.submit "捐出", class: "button glow button-rounded button-flat-primary button-small" %>
+            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -149,32 +125,4 @@ $('.unslider3-arrow').click(function() {
     });
 </script>
 
-<script type="text/javascript"> 
-$.getJSON('https://api.douban.com/v2/book/2567698?callback=?', function(data) {
-    document.getElementById("bookBox_cover").src = data.image;
-    document.getElementById("bookBox_info_title").innerHTML = data.title;
-    var str = data.summary; 
-    str = "<p>" +str + "</p>";
-    str = str.replace(/\n/g, "</p>\n<p>");
-    document.getElementById("summary").innerHTML = str; 
-    var tags=data.tags;
-    var tags_str=JSON.stringify(tags);
-    var title_str = data.title;
-    var subtitle_str = data.subtitle;
-    var author_str = data.author[0];
-    var image_str = data.image;
-    var authorIntro_str = data.author_intro;
-    var summary_str = data.summary;
-    var publisher_str = data.publisher;
-    var pubdate_str = data.pubdate;
-    var isbn_str="111";
-    $.post("addBook",{tag:tags_str,title:title_str,subtitle:subtitle_str,author:author_str,image:image_str,authorIntro:authorIntro_str,summary:summary_str
-      ,publisher:publisher_str,pubdate:pubdate_str,isbn:isbn_str},function(result){
-      });
-/* $.post("addBook",{tag:tags_str},function(result){
-   }); */
-
-});
-
-</script>
 
