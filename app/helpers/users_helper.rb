@@ -112,7 +112,13 @@ module UsersHelper
              "<td>" + link_to(User.find(pb.sender_id).name, User.find(pb.sender_id)) + "</td>" +
              "<td>" + link_to(User.find(pb.receiver_id).name, User.find(pb.receiver_id)) + "</td>" +
              "<td>" + pb.updated_at.to_s.split(' ')[0] + "</td>" + 
-             "<td>" + link_to("确认收到", '#') + "</td>" + 
+             "<td>" + link_to("确认收到", 
+                              {controller: 'users',
+                               action: 'confirm_book',
+                               book: book.id,
+                               sender: pb.sender_id},
+                              method: 'post') + 
+             "</td>" + 
              "</tr>"
     end 
 

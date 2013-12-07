@@ -105,7 +105,24 @@ class UsersController < ApplicationController
   end
 
   def confirm_book
+    receiver_id = params[:id]
+    sender_id = params[:sender]
+    book_id = params[:book]
+    
+    bp = BookPossession.where(book_id: book_id, holder: sender_id, status: "sending").first
+    bp.status = "idle"
+    bp.holder = receiver_id
+    bp.transfer_count += 1
+    bp.save
 
+    pending = PendingBook.where(book_possession_id: bp.id,
+                                sender_id: sender_id,
+                                receiver_id: receiver_id,
+                                status: "sending")
+    pending.status = "finished"
+    pending.save
+
+    redirect_to "pending_list"
   end
 
   private
