@@ -111,6 +111,18 @@ class UsersController < ApplicationController
     sender_id = params[:sender]
     book_id = params[:book]
     
+    borroweds = Borrowed.where(user_id: receiver_id, book_id: book_id)
+    if borroweds.empty?
+      borrowed = Borrowed.new
+      borrowed.user_id = receiver_id
+      borrowed.book_id = book_id
+      borrowed.num = 1
+      borrowed.save
+    else
+      borrowed = borroweds.first
+      borrowed.num += 1
+      borrowed.save
+    end
     
     bps = BookPossession.where(book_id: book_id, holder: sender_id)
     bp_id = ''

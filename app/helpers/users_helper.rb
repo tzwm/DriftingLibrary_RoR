@@ -65,6 +65,30 @@ module UsersHelper
     if tmp!=''
       ret += "<li>"+tmp+"</li>\n"
     end
+    tmp = ''
+
+    borroweds = Borrowed.where(user_id: user_id)
+    borroweds.each do |b|
+      if b.num == 0
+        next
+      end
+
+      book = Book.find(b.book_id)
+      num += 1
+      if num == 6
+        num = 1
+        ret += "<li>"+tmp+"</li>\n"
+        tmp = ''
+      else
+        tmp += link_to(image_tag(book.image,
+                                 alt:book.title,
+                                 class: "img_cover"),
+                       book) + "\n"
+      end
+    end
+    if tmp!=''
+      ret += "<li>"+tmp+"</li>\n"
+    end
 
     return ret.html_safe
   end
@@ -124,6 +148,34 @@ module UsersHelper
                "</tr>"
       end
     end
+
+    borroweds = Borrowed.where(user_id: user_id)
+    borroweds.each do |b|
+      if b.num == 0
+        next
+      end
+
+      book = Book.find(b.book_id)
+      wishes = Wish.where(book_id: b.book_id)
+      wishes.each do |w|
+        ret += "<tr>" +
+               "<td>" + 
+                        image_tag(book.image, class: 'img_cover') + 
+                        link_to(book.title, book, class: 'title') + 
+               "</td>" +
+               "<td>" + link_to(User.find(w.user_id).name, User.find(w.user_id)) + "</td>" +
+               "<td>" + d.updated_at.to_s.split(' ')[0] + "</td>" +
+               "<td>" + link_to("借出", 
+                                {controller: 'users', 
+                                 action: 'send_book', 
+                                 receiver: w.user_id, 
+                                 book: book.id }, 
+                                method: 'post') + 
+               "</td>" +
+               "</tr>"
+      end
+    end
+
 
     return ret.html_safe
   end
