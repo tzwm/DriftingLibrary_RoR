@@ -63,6 +63,31 @@ class UsersController < ApplicationController
     render 'request_list'
   end
 
+  def send_book
+    user_id = params[:id]
+    book_id = params[:book]
+    receiver_id = params[:receiver]
+
+    Wish.where(user_id: receiver_id, book_id: book_id).first.destroy
+
+    donated = Donated.where(user_id: user_id, book_id: book_id).first 
+    donated.onhand_count -= 1
+    donated.save
+
+    bp = BookPossession.where(book_id: book_id, holder: user_id).first
+    bp.status = "sending"
+    bp.save
+    
+    pending = PendingBook.new
+    pending.book_possession_id = bp.id
+    pending.sender_id = user_id
+    pending.receiver_id = receiver_id
+    pending.status = "sending"
+    pending.save 
+
+    redirect_to 'request_list'
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,

@@ -70,7 +70,7 @@ module UsersHelper
     donateds = Donated.where(user_id: user_id)
     donateds.each do |d|
       if d.onhand_count == 0
-        continue
+        next
       end
 
       book = Book.find(d.book_id)
@@ -83,11 +83,18 @@ module UsersHelper
                "</td>" +
                "<td>" + link_to(User.find(w.user_id).name, User.find(w.user_id)) + "</td>" +
                "<td>" + d.updated_at.to_s.split(' ')[0] + "</td>" +
-               "<td>" + link_to("借出", '#') + "</td>" +
+               "<td>" + link_to("借出", 
+                                {controller: 'users', 
+                                 action: 'send_book', 
+                                 receiver: w.user_id, 
+                                 book: book.id }, 
+                                method: 'post') + 
+               "</td>" +
                "</tr>"
       end
     end
 
     return ret.html_safe
   end
+
 end
