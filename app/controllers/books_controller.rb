@@ -71,8 +71,15 @@ class BooksController < ApplicationController
       else
         flash[:error]="Don't Add successfully"
       end
-
     end
+    
+    n_book_possession = BookPossession.new
+    n_book_possession.book_id = @book.id
+    n_book_possession.donor = user_id
+    n_book_possession.holder = user_id
+    n_book_possession.transfer_count = 0
+    n_book_possession.save
+
     redirect_to @current_user
   end
 
@@ -119,6 +126,13 @@ class BooksController < ApplicationController
       n_donate.num += 1
       n_donate.save
     end
+
+    n_book_possession = BookPossession.new
+    n_book_possession.book_id = book_id
+    n_book_possession.donor = user_id
+    n_book_possession.holder = user_id
+    n_book_possession.transfer_count = 0
+    n_book_possession.save
 
     flash[:success] = "成功捐赠"
     

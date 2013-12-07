@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130195625) do
+ActiveRecord::Schema.define(version: 20131207075005) do
+
+  create_table "book_possessions", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "donor"
+    t.integer  "holder"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "transfer_count"
+  end
 
   create_table "books", force: true do |t|
     t.string   "title"

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FreeTest < ActiveSupport::TestCase
+class BookProssessionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

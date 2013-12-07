@@ -80,18 +80,29 @@
         <div class="content">
           <h3 class="mb5">标签</h3>
           <div>
-            <%  
-                mtag=@book.tag
-              tags = mtag.split(',')
-              length = tags.length-1
-              for i in 0..length do
-            %>
-            <%=link_to tags[i], "#",:html=>{:class=>"book_tags"}%>
+            <% @book.tag.split(',').each do |itag| %>
+              <%=link_to itag, "#",:html=>{:class=>"book_tags"}%>
             <% end %>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="span8">
+      <div class="content">
+        <h3 class="mb5">库存信息</h3>
+        <table class="table table-striped table-hover">
+          <tr>
+            <th>捐赠者</th>
+            <th>持有者</th>
+            <th>传递次数</th>
+          </tr>
+
+          <%= stock_info(@book.id) %>
+        </table>
+      </div>
+    </div>
+
   </div>
 </div>
 

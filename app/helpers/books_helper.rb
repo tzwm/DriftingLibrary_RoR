@@ -20,4 +20,20 @@ module BooksHelper
 
     return num
   end
+
+  def stock_info(book_id)
+    ret = ''
+    books = BookPossession.where(:book_id=>book_id)
+    books.each do |book|
+      donor = User.where(:id=>book.donor).first
+      holder = User.where(:id=>book.holder).first
+      ret += "<tr>" + 
+             "<td>" + link_to(donor.name, donor) + "</td>" +
+             "<td>" + link_to(holder.name, holder) + "</td>" +
+             "<td>" + book.transfer_count.to_s + "</td>" +
+             "</tr>"
+    end
+
+    return ret.html_safe
+  end
 end
