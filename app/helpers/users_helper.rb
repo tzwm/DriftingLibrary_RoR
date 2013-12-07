@@ -97,4 +97,42 @@ module UsersHelper
     return ret.html_safe
   end
 
+  def get_pending_list(user_id)
+    ret = ""
+
+    pbs = PendingBook.where(receiver_id: user_id,
+                            status: "sending")
+    pbs.each do |pb|
+      book = Book.find(BookPossession.find(pb.book_possession_id).book_id)
+      ret += "<tr>" +
+             "<td>" +
+                      image_tag(book.image, class: 'img_cover') + 
+                      link_to(book.title, book, class: 'title') + 
+             "</td>" +
+             "<td>" + link_to(User.find(pb.sender_id).name, User.find(pb.sender_id)) + "</td>" +
+             "<td>" + link_to(User.find(pb.receiver_id).name, User.find(pb.receiver_id)) + "</td>" +
+             "<td>" + pb.updated_at.to_s.split(' ')[0] + "</td>" + 
+             "<td>" + link_to("确认收到", '#') + "</td>" + 
+             "</tr>"
+    end 
+
+    pbs = PendingBook.where(sender_id: user_id,
+                            status: "sending")
+    pbs.each do |pb|
+      book = Book.find(BookPossession.find(pb.book_possession_id).book_id)
+      ret += "<tr>" +
+             "<td>" +
+                      image_tag(book.image, class: 'img_cover') + 
+                      link_to(book.title, book, class: 'title') + 
+             "</td>" +
+             "<td>" + link_to(User.find(pb.sender_id).name, User.find(pb.sender_id)) + "</td>" +
+             "<td>" + link_to(User.find(pb.receiver_id).name, User.find(pb.receiver_id)) + "</td>" +
+             "<td>" + pb.updated_at.to_s.split(' ')[0] + "</td>" + 
+             "<td>" + "等待对方确认" + "</td>"
+             "</tr>"
+    end 
+
+    return ret.html_safe
+  end
 end
+

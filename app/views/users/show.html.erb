@@ -11,6 +11,7 @@
           <a class="content_navbar_tab" href="#">已借</a>
           <a class="content_navbar_tab" href="#">可借</a>
           <%= link_to "借书请求", {controller: 'users', action: 'request_list'}, class: 'content_navbar_tab' %>
+          <%= link_to "未确认", {controller: 'users', action: 'pending_list'}, class: 'content_navbar_tab' %>
         </div>
         <div>
           <div class="book_list">

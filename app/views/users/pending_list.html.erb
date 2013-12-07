@@ -10,18 +10,19 @@
           <a class="content_navbar_tab" href="#">想借</a>
           <a class="content_navbar_tab" href="#">已借</a>
           <a class="content_navbar_tab" href="#">可借</a>
-          <%= link_to "借书请求", {controller: 'users', action: 'request_list'}, class: 'content_navbar_tab content_navbar_tab_current' %>
-          <%= link_to "未确认", {controller: 'users', action: 'pending_list'}, class: 'content_navbar_tab' %>
+          <%= link_to "借书请求", {controller: 'users', action: 'request_list'}, class: 'content_navbar_tab' %>
+          <%= link_to "未确认", {controller: 'users', action: 'pending_list'}, class: 'content_navbar_tab content_navbar_tab_current' %>
         </div>
         <div>
           <table class="table table-striped table-hover book_list2">
             <tr>
               <th>图书</th>
-              <th>请求者</th>
-              <th>请求日期</th>
+              <th>发送者</th>
+              <th>接收者</th>
+              <th>发送日期</th>
             </tr>
 
-            <%= get_request_list(params[:id]) %>
+            <%= get_pending_list(params[:id]) %>
           </table>
         </div>
       </div>
