@@ -68,7 +68,9 @@ class UsersController < ApplicationController
     book_id = params[:book]
     receiver_id = params[:receiver]
 
-    Wish.where(user_id: receiver_id, book_id: book_id).first.destroy
+    w = Wish.where(user_id: receiver_id, book_id: book_id).first
+    logger.debug w
+    w.destroy
 
     donated = Donated.where(user_id: user_id, book_id: book_id).first 
     donated.onhand_count -= 1
@@ -85,7 +87,7 @@ class UsersController < ApplicationController
     pending.status = "sending"
     pending.save 
 
-    redirect_to 'request_list'
+    render 'request_list'
   end
 
   def pending_list
@@ -109,22 +111,33 @@ class UsersController < ApplicationController
     sender_id = params[:sender]
     book_id = params[:book]
     
-    donated = Donated.where(book_id: book_id, user_id: receiver_id)
     
-    bp = BookPossession.where(book_id: book_id, holder: sender_id, status: "sending").first
-    bp.status = "idle"
-    bp.holder = receiver_id
-    bp.transfer_count += 1
-    bp.save
+    bps = BookPossession.where(book_id: book_id, holder: sender_id)
+    bp_id = ''
+    bps.each do |bp|
+      if bp.status == "sending"
+        bp.status = "idle"
+        bp.holder = receiver_id
+        bp.transfer_count += 1
+        bp.save
+        bp_id = bp.id
+        break
+      end
+    end
 
-    pending = PendingBook.where(book_possession_id: bp.id,
+    pendings = PendingBook.where(book_possession_id: bp_id,
                                 sender_id: sender_id,
-                                receiver_id: receiver_id,
-                                status: "sending")
-    pending.status = "finished"
-    pending.save
+                                receiver_id: receiver_id)
+    pendings.each do |pending|
+      logger.debug pending
+      if pending.status == "sending"
+        pending.status = "finished"
+        pending.save
+        break
+      end
+    end
 
-    redirect_to "pending_list"
+    render 'pending_list'
   end
 
   private
