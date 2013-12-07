@@ -1,9 +1,9 @@
- <div class="span6 offset3">
+ <div class="container">
  	<% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
 
-    <%= form_for(:session, url: sessions_path,:html=>{:class=>"content form-signin"}) do |f| %>
+    <%= form_for(:session, url: sessions_path,:html=>{:class=>"content form-signup"}) do |f| %>
 
     <%= f.label :email %>
       <%= f.text_field :email %>
@@ -12,7 +12,7 @@
       <%= f.password_field :password %>
       <br/>
       <%= f.submit "Sign in", class: "button glow button-rounded button-flat-primary" %>
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 </div>
