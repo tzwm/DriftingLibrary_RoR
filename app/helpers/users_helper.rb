@@ -11,6 +11,22 @@ module UsersHelper
     @current.name
   end
 
+  def last_book
+    if Book.count >= 2
+      book = Book.last
+      book2 = Book.find(Book.count-1)
+      return link_to(image_tag(book.image), book) +
+             link_to(image_tag(book2.image, style: 'float:right'), book2)
+    end
+
+    if Book.count >= 1
+      book = Book.last
+      return link_to(image_tag(book.image), book)
+    end
+
+    return ''
+  end
+
   def get_wish_books(id)
     num = 0
     ret = ''
