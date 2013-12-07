@@ -1,19 +1,23 @@
 DriftingLibraryRor::Application.routes.draw do
 
+  root 'welcome#index'
+
   get "users/new"
   match '/signup',to:'users#new',via:'get'
-  root 'welcome#index'
   resources :users
-  resources :books
-  resources :sessions, only: [:new, :create, :destroy]
-  match '/signin',to:'sessions#new',via:'get'
-  match '/signout',to:'sessions#destroy',via:'delete'
 
+  match '/books/search', to: 'books#search', via: 'get', as: 'search'
   match '/donate',to:'books#donate',via:'post'
   match '/books/:id/wish', to: 'books#wish', via: 'post' 
   match '/books/:id/cancel_wish', to: 'books#cancel_wish', via: 'post'
   match '/books/:id/donate_again', to: 'books#donate_again', via: 'post'
+  resources :books
 
+  match '/signin',to:'sessions#new',via:'get'
+  match '/signout',to:'sessions#destroy',via:'delete'
+  resources :sessions, only: [:new, :create, :destroy]
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

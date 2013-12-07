@@ -8,12 +8,13 @@
           </li>
         </ul>
 
-        <form class="form-search header_search" action="#">
+        <%= form_for(:search, :url=>search_path, method: 'get',
+                     :html=>{class: "form-search header_search"}) do |f| %>
           <div class="input-append">
-            <input class="span2 search-query" type="text" placeholder="你想要的图书" />
-            <button class="btn">搜索</button>
+            <%= f.text_field :isbn, placeholder: "ISBN", class: "span2 search-query" %>
+            <%= f.submit "搜索", class: "btn" %>
           </div>
-        </form>
+        <% end %>
 
       </nav>
     </div>

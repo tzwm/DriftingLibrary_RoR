@@ -1,6 +1,11 @@
 module WelcomeHelper
   def five_random_books_image_tag
     ret = ""
+
+    if Book.count == 0
+      return ret
+    end
+
     5.times do
       randomID = Random.rand(Book.count) + 1
       book = Book.find(randomID)
