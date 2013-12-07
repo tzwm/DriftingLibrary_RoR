@@ -109,6 +109,8 @@ class UsersController < ApplicationController
     sender_id = params[:sender]
     book_id = params[:book]
     
+    donated = Donated.where(book_id: book_id, user_id: receiver_id)
+    
     bp = BookPossession.where(book_id: book_id, holder: sender_id, status: "sending").first
     bp.status = "idle"
     bp.holder = receiver_id

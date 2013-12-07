@@ -30,6 +30,7 @@
             <a href="#" class="unslider2-arrow prev button button-flat-primary button-tiny floatright"> << </a>
             <div class="banner2">
               <ul>
+                <%= get_onhand_books(params[:id]) %>
               </ul>
             </div>
           </div> 
@@ -39,7 +40,7 @@
             <a href="#" class="unslider3-arrow prev button button-flat-primary button-tiny floatright"> << </a>
             <div class="banner3">
               <ul>
-                <%= get_donated_books() %>
+                <%= get_donated_books %>
               </ul>
             </div>
           </div> 
