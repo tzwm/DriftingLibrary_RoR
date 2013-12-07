@@ -62,10 +62,6 @@ module UsersHelper
                        book) + "\n"
       end
     end
-    if tmp!=''
-      ret += "<li>"+tmp+"</li>\n"
-    end
-    tmp = ''
 
     borroweds = Borrowed.where(user_id: user_id)
     borroweds.each do |b|
