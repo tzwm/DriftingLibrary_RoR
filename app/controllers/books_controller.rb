@@ -32,7 +32,8 @@ class BooksController < ApplicationController
       @donated = Donated.new
       @donated.user_id=user_id
       @donated.book_id=@book.id
-      @donated.num = 1
+      @donated.onhand_count = 1
+      @donated.donated_count = 1
       if @donated.save
         #flash[:success]="add success"
       else
@@ -40,7 +41,8 @@ class BooksController < ApplicationController
       end
     else
       @c_donated = @f_donated.first
-      @c_donated.num = @c_donated.num+1
+      @c_donated.donated_count += 1
+      @c_donated.onhand_count += 1
       if @c_donated.save
         flash[:success]="Add successfully,this book's total number increase 1"
       else
@@ -94,11 +96,13 @@ class BooksController < ApplicationController
     if o_donate.empty?
       n_donate = Donated.new(:user_id=>user_id,
                              :book_id=>book_id,
-                             :num=>1)
+                             :donated_count=>1,
+                             :onhand_count=>1)
       n_donate.save
     else
       n_donate = o_donate.first
-      n_donate.num += 1
+      n_donate.donated_count += 1
+      n_donate.onhand_count += 1
       n_donate.save
     end
 

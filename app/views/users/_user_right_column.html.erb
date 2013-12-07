@@ -1,0 +1,43 @@
+<div class="span4">
+  <div class="content box_user">
+    <%= gravatar_for params[:id] %>
+    <p class="user_name pd10" ><%=name_for params[:id]%></p>
+    <br />
+    <% if signed_in? %>
+      <% 
+          @t_user = User.find(params[:id])
+        %>
+      <% if current_user?(@t_user) %>
+        <%= link_to "设置",edit_user_path(current_user),:class=>"pd10"%>
+        <!-- <a class="pd10" href="#">设置</a> -->
+        <%= link_to "登出", signout_path, method: "delete" ,:class=>"pd10"%>
+      <% end %>
+    <% end %>
+    <br />
+
+    <div class="userBox_count">
+      <span>
+        <label id="count_donate"><%=@d_count%></label>
+        捐赠
+      </span>
+      <span>
+        <label id="count_borrow"><%=@b_count%></label>
+        借入
+      </span>
+    </div>
+  </div>
+
+  <% if signed_in? %>
+    <% @t_user = User.find(params[:id])%>
+    <% if current_user?(@t_user) %>
+      <div class="content">
+        <h3>捐书</h3>
+        <%= form_for(:book,url: '/donate',:html=>{:class=>"form-inline"}) do |f| %>
+          <%= f.text_field :isbn, placeholder: "ISBN", style: "width:180px" %>
+          <%= f.submit "捐出", class: "button glow button-rounded button-flat-primary button-small" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

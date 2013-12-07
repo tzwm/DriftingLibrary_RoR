@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @donateds = Donated.where(:user_id=>params[:id])
     @d_count =0
     @donateds.each do |book|
-      @d_count = @d_count+book.num
+      @d_count = @d_count+book.donated_count
     end
     @b_books = Borrowed.where(:user_id=>params[:id])
     @b_count = 0
@@ -45,6 +45,22 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def request_list
+    @user= User.find(params[:id])
+    @donateds = Donated.where(:user_id=>params[:id])
+    @d_count =0
+    @donateds.each do |book|
+      @d_count = @d_count+book.donated_count
+    end
+    @b_books = Borrowed.where(:user_id=>params[:id])
+    @b_count = 0
+    @b_books.each do |book|
+      @b_count = @b_count+book.num
+    end
+
+    render 'request_list'
   end
 
   private

@@ -15,7 +15,7 @@ module BooksHelper
     donateds = Donated.where(:book_id=>book_id)
     num = 0
     donateds.each do |d|
-      num += d.num
+      num += d.donated_count
     end
 
     return num

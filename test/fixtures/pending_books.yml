@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  book_possession_id: 1
+  sender_id: 1
+  receiver_id: 1
+  status: MyString
+
+two:
+  book_possession_id: 1
+  sender_id: 1
+  receiver_id: 1
+  status: MyString

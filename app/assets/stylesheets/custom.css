@@ -321,29 +321,24 @@ textarea{
 }
 
 
-.book_list2 li{
-    border-bottom: 1px solid #BFC0C1;
-    padding-left: 15px;
-    padding-top: 15px;
-    font-size: 12px;
-    height: 60px;
-    width: 550px;
-}
-
-.book_list2 a{
+.book_list2 .title{
     max-width: 160px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     position: relative;
-    top: 20px;
+    top: 18px;
 }
 
-.book_list2 li img{
+.book_list2 img{
     float: left;
     width: 36px;
     height: 50px;
     padding-right: 15px;
+}
+
+.book_list2 td{
+  vertical-align: middle;
 }
 
 .book_inventory{

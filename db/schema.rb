@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207075005) do
+ActiveRecord::Schema.define(version: 20131207131246) do
 
   create_table "book_possessions", force: true do |t|
     t.integer  "book_id"
@@ -52,7 +52,17 @@ ActiveRecord::Schema.define(version: 20131207075005) do
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "num"
+    t.integer  "donated_count"
+    t.integer  "onhand_count"
+  end
+
+  create_table "pending_books", force: true do |t|
+    t.integer  "book_possession_id"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

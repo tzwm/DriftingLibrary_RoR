@@ -64,4 +64,30 @@ module UsersHelper
     return ret.html_safe
   end
 
+  def get_request_list(user_id)
+    ret = ""
+
+    donateds = Donated.where(user_id: user_id)
+    donateds.each do |d|
+      if d.onhand_count == 0
+        continue
+      end
+
+      book = Book.find(d.book_id)
+      wishes = Wish.where(book_id: d.book_id)
+      wishes.each do |w|
+        ret += "<tr>" +
+               "<td>" + 
+                        image_tag(book.image, class: 'img_cover') + 
+                        link_to(book.title, book, class: 'title') + 
+               "</td>" +
+               "<td>" + link_to(User.find(w.user_id).name, User.find(w.user_id)) + "</td>" +
+               "<td>" + d.updated_at.to_s.split(' ')[0] + "</td>" +
+               "<td>" + link_to("借出", '#') + "</td>" +
+               "</tr>"
+      end
+    end
+
+    return ret.html_safe
+  end
 end

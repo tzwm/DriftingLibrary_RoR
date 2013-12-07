@@ -6,10 +6,11 @@
     <div class="span8">
       <div class="content content_nav">
         <div class="content_navbar">
-          <a class="content_navbar_tab content_navbar_tab_current" href="#">我的书架</a>
+          <%= link_to "我的书架", User.find(params[:id]), class: 'content_navbar_tab content_navbar_tab_current' %>
           <a class="content_navbar_tab" href="#">想借</a>
           <a class="content_navbar_tab" href="#">已借</a>
           <a class="content_navbar_tab" href="#">可借</a>
+          <%= link_to "借书请求", {controller: 'users', action: 'request_list'}, class: 'content_navbar_tab' %>
         </div>
         <div>
           <div class="book_list">
@@ -23,25 +24,11 @@
             </div>
           </div> 
           <div class="book_list">
-            <h3 class="floatleft">我已借的</h3>
+            <h3 class="floatleft">我持有的</h3>
             <a href="#" class="unslider2-arrow next button button-flat-primary button-tiny floatright"> >> </a>
             <a href="#" class="unslider2-arrow prev button button-flat-primary button-tiny floatright"> << </a>
             <div class="banner2">
               <ul>
-                <li>
-                <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-                </li>
-                <li>
-                <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s24927725.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s6971618.jpg",class:"img_cover",alt:"book1")%>
-                <%= image_tag("http://img3.douban.com/lpic/s6521579.jpg",class:"img_cover",alt:"book1")%>
-                </li>
               </ul>
             </div>
           </div> 
@@ -58,49 +45,9 @@
         </div>
       </div>
     </div>
+    
+    <%= render 'users/user_right_column' %>
 
-    <div class="span4">
-      <div class="content box_user">
-        <%= gravatar_for params[:id] %>
-        <p class="user_name pd10" ><%=name_for params[:id]%></p>
-        <br />
-        <% if signed_in? %>
-          <% 
-              @t_user = User.find(params[:id])
-            %>
-          <% if current_user?(@t_user) %>
-            <%= link_to "设置",edit_user_path(current_user),:class=>"pd10"%>
-            <!-- <a class="pd10" href="#">设置</a> -->
-            <%= link_to "登出", signout_path, method: "delete" ,:class=>"pd10"%>
-          <% end %>
-        <% end %>
-        <br />
-
-        <div class="userBox_count">
-          <span>
-            <label id="count_donate"><%=@d_count%></label>
-            捐赠
-          </span>
-          <span>
-            <label id="count_borrow"><%=@b_count%></label>
-            借入
-          </span>
-        </div>
-      </div>
-
-      <% if signed_in? %>
-        <% @t_user = User.find(params[:id])%>
-        <% if current_user?(@t_user) %>
-          <div class="content">
-            <h3>捐书</h3>
-            <%= form_for(:book,url: '/donate',:html=>{:class=>"form-inline"}) do |f| %>
-              <%= f.text_field :isbn, placeholder: "ISBN", style: "width:180px" %>
-              <%= f.submit "捐出", class: "button glow button-rounded button-flat-primary button-small" %>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
   </div>
 </div>
 

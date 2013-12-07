@@ -4,6 +4,7 @@ DriftingLibraryRor::Application.routes.draw do
 
   get "users/new"
   match '/signup',to:'users#new',via:'get'
+  match '/users/:id/request_list', to:'users#request_list', via:'get'
   resources :users
 
   match '/books/search', to: 'books#search', via: 'get', as: 'search'
