@@ -47,8 +47,11 @@ class DeviceController < ApplicationController
   end
   private
   def create_book(isbn)
+    logger.info "111"
     url = "https://api.douban.com/v2/book/isbn/"+isbn.to_s+"?apikey=05fda08443dc365f11f8e18ccb94a31d&callback=?"
+    logger.info "222"
     buffer = open(url, "UserAgent" => "Ruby-Wget").read
+    logger.info "333"
     data = JSON.parse(buffer)
     title = data['title']
     sub_title=data['sub_title']
