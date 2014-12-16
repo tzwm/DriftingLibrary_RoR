@@ -1,20 +1,18 @@
 <div class="span4">
   <div class="content box_user">
     <%= gravatar_for params[:id] %>
-    <p class="user_name pd10" ><%=name_for params[:id]%></p> </br>
+    <p class="user_name pd10" ><%=name_for params[:id]%></p> <br />
     <p class="user_name pd10" ><%=User.find(params[:id]).email%></p>
     <br />
     <% if signed_in? %>
-      <% 
-          @t_user = User.find(params[:id])
-        %>
+      <% @t_user = User.find(params[:id]) %>
       <% if current_user?(@t_user) %>
         <%= link_to "设置",edit_user_path(current_user),:class=>"pd10"%>
         <!-- <a class="pd10" href="#">设置</a> -->
         <%= link_to "登出", signout_path, method: "delete" ,:class=>"pd10"%>
+        <br />
       <% end %>
     <% end %>
-    <br />
 
     <div class="userBox_count">
       <span>
