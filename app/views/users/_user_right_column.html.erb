@@ -1,7 +1,8 @@
 <div class="span4">
   <div class="content box_user">
     <%= gravatar_for params[:id] %>
-    <p class="user_name pd10" ><%=name_for params[:id]%></p>
+    <p class="user_name pd10" ><%=name_for params[:id]%></p> </br>
+    <p class="user_name pd10" ><%=User.find(params[:id]).email%></p>
     <br />
     <% if signed_in? %>
       <% 
